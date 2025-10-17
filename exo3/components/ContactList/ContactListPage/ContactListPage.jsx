@@ -3,25 +3,29 @@ import List from "../List/List";
 import { useContacts } from '../../../context/ContactContext';
 
 export default function ContactListPage({ navigation }) {
-    const { contacts } = useContacts();
+    const { contacts, addToFavorite } = useContacts();
 
     const handleContactSelect = (contact) => {
         navigation.navigate('Contact', { contact });
     };
 
-    const handleAddContact = () => {
-        navigation.navigate('Ajouter');
-    };
+    // const handleAddContact = () => {
+    //     navigation.navigate('Ajouter');
+    // };
+
+    const handleAddToFavorite = (id) => {
+        addToFavorite(id);
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>Mes Contacts</Text>
-                <TouchableOpacity style={styles.addButton} onPress={handleAddContact}>
-                    <Text style={styles.addButtonText}>+ Ajouter</Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity style={styles.addButton} onPress={handleAddContact}>*/}
+                {/*    <Text style={styles.addButtonText}>+ Ajouter</Text>*/}
+                {/*</TouchableOpacity>*/}
             </View>
-            <List contacts={contacts} onContactSelect={handleContactSelect}></List>
+            <List contacts={contacts} onContactSelect={handleContactSelect} onAddFav={handleAddToFavorite}></List>
         </View>
     )
 }

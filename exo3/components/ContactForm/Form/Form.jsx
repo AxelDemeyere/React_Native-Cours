@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, Alert} from 'react-native';
 import { useState } from 'react';
-import { useContacts } from '../../context/ContactContext';
+import { useContacts } from '../../../context/ContactContext';
 
 export default function ContactInfo({navigation}) {
     const { addContact } = useContacts();
